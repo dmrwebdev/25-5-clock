@@ -6,6 +6,7 @@
 
 html {
   font-size: 10px;
+  
 }
 
 body {
@@ -19,6 +20,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: burlywood;
+  color: whitesmoke;
 }
 
 code {
@@ -26,44 +29,132 @@ code {
     monospace;
 }
 
-.App {
-  text-align: center;
-  border: 2px solid black;
-  padding: 1em 2.5em 1.5em 2.5em;
+#root {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.strap {
+  position: absolute;
+  height: 100%;
+  width: 40%;
+  background-color: rgb(27, 26, 26);
+  top: 0;
+  z-index: -5;
+}
+
+.circle {
+  position: relative;
+  border-radius: 50%;
+}
+
+.outer {
+  background-color: white;
+  width: 55%;
+  height: auto;
+  padding-top: 55%;
+}
+
+.inner {
+  position: absolute;
+  background: black;
+  min-width: 400px;
+  min-height: 400px;
+  width: 90%;
+  height: auto;
+  padding-top: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 h1 {
-  font-size: 4em;
+  font-size: 5em;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 70%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
-main {
+.timer-controls {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  height: 40%;
+  display: grid;
+  grid: [row1-start] "label pause" 1fr [row1-end]
+        [row2-start] "timer reset" 1fr [row2-end]
+        / 3.25fr 1fr;
+}
+
+#timer-label, #time-left {
   display: flex;
-  justify-content: center
+  justify-content: center;
+  align-items: center;
+  font-size: 10rem;
 }
 
-.control-container {
+#start_stop {
+  filter: invert(100%);
+}
+
+#reset {
+
+  width: 100%;
+}
+
+.length-controls {
+  position: absolute;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  top: 80%;
+  left: 50%;
+  width: 60%;
+  transform: translate(-50%, -50%);
+}
+
+.control {
+  padding: 1rem;
+}
+
+.length-controls button {
+  flex: 1 0;
+}
+
+.length-controls div {
   flex: 1;
+  font-size: 2rem;
 }
 
 .session {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#session-label, #break-label {
+  font-size: 2em;
+  margin-bottom: 1rem;
 }
 
 .session-control {
   display: flex;
+  justify-content: center;
+  align-items: stretch;
 }
 
 .break {
-
-}
-.break-control {
-  display: flex;
-}
-
-.timer {
   display: flex;
   flex-direction: column;
+}
+
+.break-control {
+  display: flex;
   justify-content: center;
-  align-items: center;
-  flex: 1;
 }

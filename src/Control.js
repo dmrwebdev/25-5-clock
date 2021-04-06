@@ -2,11 +2,11 @@ import Button from './Button'
 
 function Control(props) {
   return (
-    <div className={props.className} >
-      <label>{props.text}</label >
+    <div className={`control ${props.className}`} >
+      <label id={props.labelId}>{props.label}</label >
         <div className={`${props.className}-control`}>
           <Button id={props.decrement} onClick={props.onClick} value="-"/>
-          <div id={props.label}>{props.state}</div>
+          <div id={props.lengthId}>{props.lengthState}</div>
           <Button id={props.increment} onClick={props.onClick} value="+"/>
         </div>
     </div>

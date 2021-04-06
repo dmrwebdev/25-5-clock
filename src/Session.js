@@ -1,12 +1,27 @@
-import Button from './Button'
+import playPause from './play-pause.svg'
+import reset from './reset.svg'
+
 
 function Session(props) {
+
+  function convertTime() {
+    const secVal = Math.floor(props.timerState % 60);
+    const minVal = Math.floor(props.timerState / 60);
+    const secs = secVal >= 9 ? Math.floor(props.timerState % 60) : `0${Math.floor(props.timerState % 60)}` 
+    const mins = minVal >= 9 ? Math.floor(props.timerState / 60) : `0${Math.floor(props.timerState / 60)}`
+    return (
+      <div id="time-left">
+        {mins}:{secs}
+      </div>
+    )
+  }
+
   return (
-    <div className={props.className} >
-      <label>{props.label}</label>
-      <div id={props.id} >{props.state}</div>
-      <Button id={props.startStop} onClick={props.playPauseSwitch} value={props.startStop}/>
-      <Button id={props.reset} onClick={props.resetSwitch} value={props.reset}/>
+    <div className='timer-controls' >
+      <label id='timer-label'>{props.sessionState}</label>
+      <img id='start_stop' src={playPause} onClick={props.togglePause} alt="Play/Pause"/>
+      <div id='time-left' >{convertTime()}</div>
+      <img id='reset' src={reset} onClick={props.reset} alt="Reset"/>
     </div>
   );
 }
