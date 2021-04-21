@@ -3,14 +3,14 @@ import './index.css';
 import Control from './Control'
 import Session from './Session';
 
-const beep = document.getElementById('beep');
-
 function App() {
   const [sessionLength, setSession] = useState(25);
   const [breakLength, setBreak] = useState(5);
   const [timer, setTimer] = useState(1500);
   const [timerOn, setTimerOn] = useState(false);
   const [sessionOrBreak, setSessionOrBreak] = useState('Session');
+
+  
 
   useEffect(() => {
     if (sessionOrBreak === 'Session') {
@@ -39,6 +39,7 @@ function App() {
   }
 
   function reset() {
+    const beep = document.getElementById('beep');
     setTimerOn(false);
     setSessionOrBreak('Session');
     setTimer(sessionLength * 60);
@@ -50,11 +51,11 @@ function App() {
   }
 
   function togglePause() {
-    console.log(';this')
     timerOn ? setTimerOn(false) : setTimerOn(true);
   }
 
   useInterval(() => {
+    const beep = document.getElementById('beep');
     if (timerOn) {
       if(sessionOrBreak === 'Session') {
         if (timer > 0) {
@@ -78,6 +79,8 @@ function App() {
     <>
     <div className="strap"/>
     <div className="circle outer">
+    <div className="knob1">F</div>
+    <div className="knob2">F</div>
     <div className="circle inner">
       <h1>25 + 5 Clock</h1>
       <Session
@@ -119,7 +122,6 @@ function App() {
 
 function useInterval(callback, delay) {
   const savedCallback = useRef();
-  console.log(savedCallback)
   // Remember the latest callback.
   useEffect(() => {
     savedCallback.current = callback;
